@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>React</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>React</h1>
+        <h3>A JavaScript library for building user interfaces</h3>
+      </section>
+      <section>
+        <p><img src="https://secure.gravatar.com/avatar/0d9079a1311d9f89b0b28b13cea56a70?size=200px" height="200" width="200"></p>
+        <h3 style="margin-bottom: 0; margin-top: 10px;">Mewes Kochheim</h3>
+        <h5>Software & System Architect</h5>
+        <p style="margin-top: 10px;">
+          <h4>github.com/MewesK</h4>
+        </p>
+      </section>
+      <section class="gif-what">
+        <h2>React, what's that?</h2>
+      </section>
+      <section>
+        <h2>In a nutshell</h2>
+        <ul>
+          <li>"An open-source JavaScript library providing a view for data rendered as HTML."</li>
+          <li>Created by Jordan Walke in 2013</li>
+          <li>Currently maintained by Facebook and Instagram</li>
+          <li>Also used by Imgur, Airbnb and others</li>
+        </ul>
+        <div class="footer"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_(square).png" class="logo">&nbsp;<img src="http://planyourmeetings.com/wp-content/uploads/instagram-camera-logo.png" class="logo">&nbsp;<img src="https://imgur.userecho.com/s/logos/2015/2015.png" class="logo">&nbsp;<img src="http://pbs.twimg.com/media/Bsrv_TRIUAEywyr.jpg" class="logo"></div>
+      </section>
+      <section>
+        <h2>Just the UI</h2>
+        <p>"Lots of people use React as the V in MVC. Since React makes no assumptions about the rest of your technology stack, it's easy to try it out on a small feature in an existing project."</p>
+        <p class="credits">facebook.github.io/react/</p>
+      </section>
+      <section>
+        <h2>Virtual DOM</h2>
+        <p>"React abstracts away the DOM from you, giving a simpler programming model and better performance. React can also render on the server using Node, and it can power native apps using React Native."</p>
+        <p class="credits">facebook.github.io/react/</p>
+      </section>
+      <section>
+        <h2>Data Flow</h2>
+        <p>"React implements one-way reactive data flow which reduces boilerplate and is easier to reason about than traditional data binding."</p>
+        <p class="credits">facebook.github.io/react/</p>
+      </section>
+      <section>
+        <h2>Components</h2>
+        <ul>
+          <li>Components are the core concept of React</li>
+          <li>Used to encapsulate and modularize view components</li>
+          <li>Can be standalone or composed of other React components</li>
+          <li>Written in babel (a JavaScript dialect)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Example</h2>
+        <pre><code class="language-javascript">var Hello = React.createClass({
+  render: function() {
+    ...
+  }
+});
+ReactDOM.render(
+  &lt;Hello /&gt;,
+  document.getElementById('content')
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Rendering</h2>
+        <ul>
+          <li>React includes the templating language JSX</li>
+          <li>JSX is a XML-like syntax extension to ECMAScript</li>
+          <li>More info at facebook.github.io/jsx</li>
+          <li>JSX is recmmoneded but not required!</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Example</h2>
+        <pre><code class="language-javascript">var Hello = React.createClass({
+  render: function() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+});
+ReactDOM.render(
+  &lt;Hello name="World" /&gt;,
+  document.getElementById('content')
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Data handling</h2>
+        <ul>
+          <li>React provides the internal structure for data handling.<br>This includes:</li>
+          <li>Properties management (this.props)</li>
+          <li>State management (this.state)</li>
+          <li>Automatic re-rendering when the state changes (this.setState)</li>
+          <li class="danger">But it does not provide a dedicated way to communicate with a server!</li>
+        </ul>
+      </section>
+      <section class="full-height">
+        <h2>Example</h2>
+        <pre class="small-code"><code class="language-javascript">var Hello = React.createClass({
+  load: function() {
+    $.ajax({
+      url: this.props.url,
+      ...
+      success: function(data) {
+        this.setState({name: data});
+      }.bind(this),
+      ...
+    });
+  },
+  getInitialState: function() {
+    return {name: 'World'};
+  },
+  componentDidMount: function() {
+    this.load();
+    setInterval(this.load, this.props.pollInterval);
+  },
+  render: function() {
+    return &lt;div&gt;Hello {this.state.name}&lt;/div&gt;;
+  }
+});
+ReactDOM.render(
+  &lt;Hello url="/api/name" pollInterval={2000} /&gt;,
+  document.getElementById('content')
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Sub-components</h2>
+        <ul>
+          <li>Basix concept to write reusable components</li>
+          <li>Components can be used in JSX just like HTML tags</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Example</h2>
+        <pre><code class="language-javascript">var Hello2 = React.createClass({
+  render: function() {
+    return &lt;hello name="{this.props.name}" &gt;;
+  }
+});
+ReactDOM.render(
+  &lt;Hello2 name="World" /\&gt;,
+  document.getElementById('content')
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Pre-compiling</h2>
+        <p>Install the Babel command-line tools (requires npm):</p><code>
+          npm install --global babel-cli
+          npm install babel-preset-react</code>
+        <p>Run the precompiler:</p><code>
+          babel --presets react ''src'' --watch --out-dir ''build''
+          </code>
+      </section>
+      <section>
+        <h2>Advanced stuff...</h2>
+        <h3>...that we are ignoring for now</h3>
+        <ul>
+          <li>Server-side rendering (isomorphism)</li>
+          <li>Form handling & two-way bindings</li>
+          <li>Testing</li>
+          <li>React Native (Android and iOS)</li>
+        </ul>
+      </section>
+      <section class="gif-hell">
+        <h1 class="danger contrast">License hell</h1>
+      </section>
+      <section>
+        <p>Initially using standard Apache License 2.0</p>
+        <p>Later using a BSD license that permits usage of any Facebook patents related to the software</p>
+        <p class="danger">Now using a BSD-like license that allows Facebook to revoke the license at any given time!</p>
+        <h2 class="danger">The current license is not OSI-approved!</h2>
+      </section>
+      <section class="gif-more">
+        <h2>Want more?</h2>
+        <p>That's a rhetorical question...</p>
+      </section>
+      <section>
+        <h2>Tutorials, tools, components and more</h2>
+        <h3>https://github.com/facebook/react/wiki/Complementary-Tools</h3>
+        <h3>https://github.com/enaqx/awesome-react</h3>
+      </section>
+      <section class="gif-thanks">
+        <div class="footer">
+          <p style="font-size:20px;" class="contrast">
+            You can find this presentation on GitHub:
+            https://github.com/MewesK/presentation-react
+            
+          </p>
+        </div>
+      </section>
+    </article>
+  </body>
+</html>
+<script src="build/build.js"></script>
