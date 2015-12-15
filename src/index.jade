@@ -164,12 +164,14 @@ html
       section
         h2 Pre-compiling
         p Install the Babel command-line tools (requires npm):
-        code.
-          npm install --global babel-cli
-          npm install babel-preset-react
+        pre
+          code.language-bash.
+            npm install --global babel-cli
+            npm install babel-preset-react
         p Run the precompiler:
-        code.
-          babel --presets react ''src'' --watch --out-dir ''build''
+        pre
+          code.language-bash.
+            babel --presets react "src" --watch --out-dir "build"
 
       section
         h2 Advanced stuff...
